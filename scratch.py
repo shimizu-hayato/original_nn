@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sklearn.datasets
 import matplotlib
+import sklearn.datasets
+
 matplotlib.use('tkagg')
 import matplotlib.pyplot as plt
 import numpy as np
@@ -129,16 +130,16 @@ class Newral_Network(object):
         errors = np.asarray(errors)
         plt.plot(errors)
 
+if __name__ == '__main__':
+    data = sklearn.datasets.make_classification(
+    n_features=2, n_samples=300, n_redundant=0, 
+        n_informative=2,n_clusters_per_class=1, n_classes=3,random_state=0)
 
-data = sklearn.datasets.make_classification(
-n_features=2, n_samples=300, n_redundant=0, 
-    n_informative=2,n_clusters_per_class=1, n_classes=3,random_state=0)
-
-#plt.scatter(x[:, 0], x[:, 1],c=label,cmap=plt.cm.jet)
-#plt.show()
-#N=len(data[0])
-#print(len(x[:, 1]))
-dataset = np.c_[data[0],data[1]]
-print(dataset[1][2])
-Newral_Network = Newral_Network(unit=[2,3,3])
-Newral_Network.train(dataset=data,N=300)
+    #plt.scatter(x[:, 0], x[:, 1],c=label,cmap=plt.cm.jet)
+    #plt.show()
+    #N=len(data[0])
+    #print(len(x[:, 1]))
+    dataset = np.c_[data[0],data[1]]
+    print(dataset[1][2])
+    Newral_Network = Newral_Network(unit=[2,3,3])
+    Newral_Network.train(dataset=data,N=300)
